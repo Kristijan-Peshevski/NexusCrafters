@@ -4,7 +4,7 @@
 namespace Staatic\Vendor\Composer\Autoload;
 
 use Closure;
-class ComposerStaticInit1ae4aa84f74a53c686537cc99fddc1d8
+class ComposerStaticInit2e8485bf03705ab2b3efce7eb9fd7a43
 {
     public static $files = array('6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php', '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php', '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php', '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php', 'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php', '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php', '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php', '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php', 'b686b8e46447868025a15ce5d0cb2634' => __DIR__ . '/..' . '/symfony/polyfill-php74/bootstrap.php', 'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php', '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php');
     public static $prefixLengthsPsr4 = array('v' => array('voku\\helper\\' => 12), 'Z' => array('ZipStream\\' => 10), 'S' => array('Symfony\\Polyfill\\Php81\\' => 23, 'Symfony\\Polyfill\\Php80\\' => 23, 'Symfony\\Polyfill\\Php74\\' => 23, 'Symfony\\Polyfill\\Php73\\' => 23, 'Symfony\\Polyfill\\Php72\\' => 23, 'Symfony\\Polyfill\\Mbstring\\' => 26, 'Symfony\\Polyfill\\Ctype\\' => 23, 'Symfony\\Contracts\\Service\\' => 26, 'Symfony\\Contracts\\HttpClient\\' => 29, 'Symfony\\Component\\VarExporter\\' => 30, 'Symfony\\Component\\HttpClient\\' => 29, 'Symfony\\Component\\Filesystem\\' => 29, 'Symfony\\Component\\DependencyInjection\\' => 38, 'Symfony\\Component\\CssSelector\\' => 30, 'Symfony\\Component\\Config\\' => 25, 'Staatic\\WordPress\\Premium\\' => 26, 'Staatic\\WordPress\\' => 18, 'Staatic\\Framework\\' => 18, 'Staatic\\Crawler\\' => 16), 'R' => array('Ramsey\\Uuid\\' => 12, 'Ramsey\\Collection\\' => 18), 'P' => array('Psr\\SimpleCache\\' => 16, 'Psr\\Log\\' => 8, 'Psr\\Http\\Message\\' => 17, 'Psr\\Http\\Client\\' => 16, 'Psr\\Container\\' => 14, 'Psr\\Cache\\' => 10), 'M' => array('MyCLabs\\Enum\\' => 13, 'Masterminds\\' => 12), 'G' => array('GuzzleRetry\\' => 12, 'GuzzleHttp\\Psr7\\' => 16, 'GuzzleHttp\\Promise\\' => 19, 'GuzzleHttp\\' => 11), 'D' => array('DOMWrap\\' => 8), 'B' => array('Brick\\Math\\' => 11), 'A' => array('AsyncAws\\S3\\' => 12, 'AsyncAws\\Core\\' => 14, 'AsyncAws\\CloudFront\\' => 20));
@@ -16,9 +16,9 @@ class ComposerStaticInit1ae4aa84f74a53c686537cc99fddc1d8
     public static function getInitializer($loader)
     {
         return Closure::bind(function () use($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1ae4aa84f74a53c686537cc99fddc1d8::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1ae4aa84f74a53c686537cc99fddc1d8::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit1ae4aa84f74a53c686537cc99fddc1d8::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2e8485bf03705ab2b3efce7eb9fd7a43::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2e8485bf03705ab2b3efce7eb9fd7a43::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit2e8485bf03705ab2b3efce7eb9fd7a43::$classMap;
         }, null, ClassLoader::class);
     }
 }

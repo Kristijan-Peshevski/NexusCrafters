@@ -22,34 +22,36 @@ final class FallbackUrlExtractor extends AbstractPatternUrlExtractor
     }
     protected function getPatterns() : array
     {
-        return [['pattern' => '~(
-                    (?P<scheme>https?:)?//' . \preg_quote($this->baseUrl->getAuthority(), '~') . '
-                    (?P<port>:(?:80|443))?' . (empty(\trim($this->filterBasePath, '/')) ? '(?=[^a-zA-Z0-9-.])' : '(?P<path>/' . \preg_quote(\trim($this->filterBasePath, '/'), '~') . ')') . '/?
-
-                )~iux'], ['pattern' => '~(
-                    (?P<scheme>https?:)?\\\\/\\\\/' . \preg_quote($this->jsonEncode($this->baseUrl->getAuthority()), '~') . '
-                    (?P<port>:(?:80|443))?' . (empty(\trim($this->filterBasePath, '/')) ? '(?=[^a-zA-Z0-9-.])' : '(?P<path>\\\\/' . \preg_quote($this->jsonEncode(\trim($this->filterBasePath, '/')), '~') . ')') . '(?:\\\\/)?
-
-                )~iux', 'encode' => function (string $value) {
-            return $this->jsonEncode($value);
+        $formats = ['plain' => ['encode' => function (string $value) {
+            return $value;
         }, 'decode' => function (string $value) {
-            return $this->jsonDecode($value);
-        }], ['pattern' => '~(
-                    (?P<scheme>https?%3A)?%2F%2F' . \preg_quote(\rawurlencode($this->baseUrl->getAuthority()), '~') . '
-                    (?P<port>%3A(?:80|443))?' . (empty(\trim($this->filterBasePath, '/')) ? '(?=[^a-zA-Z0-9-.])' : '(?P<path>%2F' . \preg_quote(\rawurlencode(\trim($this->filterBasePath, '/')), '~') . ')') . '(?:%2F)?
-
-                )~iux', 'encode' => function (string $value) {
+            return $value;
+        }], 'jsonEncoded' => ['encode' => function (string $value) {
+            return \str_replace('/', '\\/', $value);
+        }, 'decode' => function (string $value) {
+            return \str_replace('\\/', '/', $value);
+        }], 'urlEncoded' => ['encode' => function (string $value) {
             return \rawurlencode($value);
         }, 'decode' => function (string $value) {
             return \rawurldecode($value);
         }]];
-    }
-    private function jsonEncode(string $string) : string
-    {
-        return \str_replace('/', '\\/', $string);
-    }
-    private function jsonDecode(string $string) : string
-    {
-        return \str_replace('\\/', '/', $string);
+        $patterns = [];
+        foreach ($formats as $format => $options) {
+            $slash = \preg_quote($options['encode']('/'), '~');
+            $doubleColon = \preg_quote($options['encode'](':'), '~');
+            $authority = \preg_quote($options['encode']($this->baseUrl->getAuthority()), '~');
+            $filterBasePath = \preg_quote($options['encode'](\trim($this->filterBasePath, '/')), '~');
+            $patterns[] = ['pattern' => '~(
+                    (?P<scheme>https?' . $doubleColon . ')?' . $slash . $slash . $authority . '
+                    (?P<port>' . $doubleColon . '(?:80|443))?
+                    (?P<path>' . (empty($filterBasePath) ? '' : $slash . $filterBasePath) . '
+
+                        # Either the URL has an extra path or in the future it has a non-path char.
+                        (' . $slash . '|(?![a-z0-9-.]))
+                    )
+
+                )~iux', 'encode' => $options['encode'], 'decode' => $options['decode']];
+        }
+        return $patterns;
     }
 }

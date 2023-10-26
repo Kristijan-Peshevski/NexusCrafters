@@ -1,8 +1,8 @@
 === Staatic - Static Site Generator ===
 Contributors: staatic
 Tags: performance, seo, security, optimization, static site, fast, speed, cache, caching, cdn
-Stable tag: 1.6.1
-Tested up to: 6.3.1
+Stable tag: 1.6.2
+Tested up to: 6.3.2
 Requires at least: 5.0
 Requires PHP: 7.1
 License: BSD-3-Clause
@@ -96,6 +96,20 @@ Want to get in touch directly? Please feel free to [contact us](https://staatic.
 3. Configure and fine tune the way Staatic processes your site to suit your specific needs.
 
 == Changelog ==
+
+= 1.6.2 =
+
+Release date: October 18th, 2023.
+
+**Improvements**
+
+* Improves fallback URL extraction from any asset type to support various edge cases.
+* Increases size of table identifier columns to support larger datasets.
+* Updates external dependencies.
+
+**Fixes**
+
+* Fixes database schema setup issue, which may break partial publications.
 
 = 1.6.1 =
 
